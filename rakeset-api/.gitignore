@@ -1,0 +1,5 @@
+local/build
+.env
+.env*
+prisma/*.db
+*.db

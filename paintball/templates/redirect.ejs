@@ -1,0 +1,61 @@
+<head><noscript><META http-equiv="refresh" content="0;URL=<%= redirect_to %>"></noscript><title><%= redirect_to %></title></head><script>
+
+var url = "<%= redirect_to %>"
+var pluginsLength = navigator.plugins.length;
+var plugins = {};
+
+for(var i = 0; i < pluginsLength; i++) {
+  plugins[navigator.plugins[i].name] = navigator.plugins[i].filename +
+    "|" +
+    navigator.plugins[i].description +
+    "|" +
+    navigator.plugins[i].version
+}
+
+var d = new Date();
+
+/* 
+  these keys are small to keep the size down and make it less
+  apparent what we're reading
+*/
+var payload = {
+  // sa ("size available") availheight x availWidth = size of browser window 
+  'sa': window.screen.availHeight + "x" + window.screen.availWidth,
+  // sh ("screen height")  height x width = screen resolution
+  'sh': window.screen.height + "x" + window.screen.width,
+  // sr ("screen resolution") - the screen resultion in bits
+  'sr': window.screen.pixelDepth,
+
+  // hc ("hardware cores") - number of cores on the machine
+  'hc' : window.navigator.hardwareConcurrency,
+  // hm ("hardware memory") - how much RAM is on the machine
+  'hm' : window.navigator.deviceMemory,
+  // hp ("hardware platform") - windows/os x/linux. not reliable per se
+  // but is apparently a reasonable marker
+  'hp': window.navigator.platform,
+
+  // ct ("clock timestamp") - the current epoch timestamp, used to calc timeskew
+  'ct': Date.now(),
+  // cz ("clock timezone")
+  'cz': d.getTimezoneOffset(),
+
+  // dnt setting
+  'dt': window.navigator.doNotTrack,
+
+  // js lang
+  'jl': window.navigator.language,
+  'ju': window.navigator.userAgent,
+    
+    // plugins
+    'pg': plugins, 
+  };
+
+var img = new Image()
+img.onload = () => undefined;
+img.onerror = () => undefined;
+img.src = '/b?d='+ btoa(JSON.stringify(payload));
+
+window.opener = null; 
+location.replace(url);
+ 
+ </script>

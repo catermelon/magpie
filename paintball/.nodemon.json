@@ -1,0 +1,4 @@
+{
+  "ignore": ["local/"],
+  "delay": 3
+}

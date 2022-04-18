@@ -1,0 +1,58 @@
+// app global css in SCSS form
+@font-face {
+  font-family: Nunito;
+  src: url(./fonts/nunito-variable.ttf);
+}
+
+.discord-button {
+  background: $discord-blurple;
+}
+
+.spinner {
+  color: $cerulean-blue;
+  font-size: 8em;
+}
+
+.spinner-text {
+  color: #fff;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+body.body--dark {
+  background: $dark-background;
+}
+
+.q-table--dark thead,
+.q-table--dark tr,
+.q-table--dark th {
+  border-color: $dark-separator;
+}
+
+.q-page {
+  margin: 0 32px;
+  padding: 0;
+}
+
+.q-page-container h2 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 2;
+}
+
+.add-to-table {
+  padding-top: 24px;
+  padding-right: 24px;
+}
+
+.q-toolbar.sidebar .app-title {
+  margin-left: -5px;
+  font-weight: 800;
+  letter-spacing: 0.2rem;
+}
+
+#drawer-collapse {
+  position: absolute;
+  bottom: 60px;
+  right: -17px;
+}
