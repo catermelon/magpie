@@ -4,7 +4,7 @@
 
 const fastifyPlugin = require("fastify-plugin");
 
-const fastifySensible = require("fastify-sensible");
+const fastifySensible = require("@fastify/sensible");
 const appEnv = require("./app-env");
 const appDB = require("./app-db");
 const appTracking = require("./tracking");

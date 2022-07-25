@@ -1,6 +1,6 @@
 // CommonJs
 const fastifyPlugin = require("fastify-plugin");
-const fastifyCookies = require("fastify-cookie");
+const fastifyCookies = require("@fastify/cookie");
 
 const trackingCookieName = "bztr";
 const cookieValue = "v1";

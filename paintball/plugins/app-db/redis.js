@@ -1,5 +1,5 @@
 const fp = require("fastify-plugin");
-const fastifyRedis = require("fastify-redis");
+const fastifyRedis = require("@fastify/redis");
 
 async function redisPlugin(fastify, options, done) {
   fastify.register(fastifyRedis, {

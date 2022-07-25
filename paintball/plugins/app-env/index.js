@@ -7,7 +7,7 @@
   
 */
 const fastifyPlugin = require("fastify-plugin");
-const fastifyEnv = require("fastify-env");
+const fastifyEnv = require("@fastify/env");
 
 const envConfigSchema = require("../../env-schema");
 

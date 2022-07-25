@@ -2,13 +2,16 @@
 const fastify = require("fastify")({
   exposeHeadRoutes: true,
   logger: {
-    prettyPrint:
+    transport:
       process.env.NODE_ENV === "development"
         ? {
-            translateTime: "HH:MM:ss Z",
-            ignore: "pid,hostname",
+            target: "pino-pretty",
+            options: {
+              translateTime: "HH:MM:ss Z",
+              ignore: "pid,hostname",
+            },
           }
-        : false,
+        : undefined,
   },
 });
 
@@ -29,7 +32,7 @@ const start = async () => {
     await fastify.ready();
 
     // and this starts the listener
-    await fastify.listen(fastify.config.PORT);
+    await fastify.listen({ port: fastify.config.PORT });
   } catch (err) {
     fastify.log.error(err);
     process.exit(1);
